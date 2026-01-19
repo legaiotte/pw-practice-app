@@ -41,5 +41,8 @@ test('Locator syntax rules', async ({page}) => {
 })
 
 test('User facing locators', async({page}) => {
-    page.getByRole('textbox', {name: "Email"}).first().click()
+    await page.getByRole('textbox', {name: "Email"}).first().click()
+    await page.getByRole('button', {name: "sign in"}).first().click()
+
+     await page.getByLabel('Email').first().click()
 })
