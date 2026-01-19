@@ -6,14 +6,14 @@ import {test} from '@playwright/test'
 //test.describe
 
 test.beforeEach(async({page}) => {
-    await page.goto ('http://localhost:4200')
+    await page.goto ('http://localhost:4200/')
     await page.getByText('Forms').click()
     await page.getByText('Forms layouts').click()
 })
 
 test('Locator syntax rules', async ({page}) => {
     //by tag name
-    await page.locator('input').first().click()
+    page.locator('input').first().click()
 
     //by ID
     page.locator('#inputEmail1')
@@ -44,5 +44,13 @@ test('User facing locators', async({page}) => {
     await page.getByRole('textbox', {name: "Email"}).first().click()
     await page.getByRole('button', {name: "sign in"}).first().click()
 
-     await page.getByLabel('Email').first().click()
+    await page.getByLabel('Email').first().click()
+
+    await page.getByPlaceholder('Jane Doe').first().click()
+
+    await page.getByText('Using the Grid').click()
+
+    await page.getByTestId('').click()
+
+    await page.getByTitle('IoT Dashboard').click()
 })
