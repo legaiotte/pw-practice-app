@@ -71,5 +71,10 @@ test('locating parent elements', async({page}) =>{
 
     await page.locator('nb-card').filter({hasText: "Basic form"}).getByRole('textbox', {name: "Email"}).click()
     await page.locator('nb-card').filter({has: page.locator('.status-danger')}).getByRole('textbox', {name: "Password"}).click()
-        
+
+    await page.locator('nb-card').filter({has: page.locator('nb-checkbox')}).filter({hasText: "Sign in"})
+            .getByRole('textbox', {name: "Email"}).click()
+            
+    //not recommended
+    await page.locator(':text-is("Using the Grid")').locator('..')
 })  
