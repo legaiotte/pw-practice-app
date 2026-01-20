@@ -1,3 +1,4 @@
+import { ParseError } from '@angular/compiler'
 import {test} from '@playwright/test'
 //hooks: optimize code flow and execution 
 //beforeEachtest:executed for every test 
@@ -63,3 +64,12 @@ test('locating child elements', async({page}) =>{
     await page.locator('nb-card').nth(3).getByRole('button').click()
 
 })
+
+test('locating parent elements', async({page}) =>{
+    await page.locator('nb-card', {hasText:"Using the Grid"}).getByRole('textbox', {name: "Email"}).click()
+    //await page.locator('nb-card', {has: page.locator('inputEmail1')}).getByRole('textbox', {name: "Email"}).click()
+
+    await page.locator('nb-card').filter({hasText: "Basic form"}).getByRole('textbox', {name: "Email"}).click()
+    await page.locator('nb-card').filter({has: page.locator('.status-danger')}).getByRole('textbox', {name: "Password"}).click()
+        
+})  
