@@ -7,5 +7,16 @@ test.beforeEach(async({page}) => {
 
 test('Auto Waiting', async({page}) => {
     const successbutton = page.locator('.bg-success')
-    await successbutton.click()
+    //await successbutton.click()
+
+    const text = await successbutton.textContent()
+
+    expect(text).toEqual('Data loaded with AJAX get request')
+})
+
+test('Timeout', async({page}) => {
+const successbutton = page.locator('.bg-success')
+
+await successbutton.click()
+
 })
